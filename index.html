@@ -60,10 +60,10 @@
             <th></th>
           </tr>
           <tr  ng-repeat="(id, attendee) in register.attendees">
-            <td>{{attendee.firstName}}</td>
-            <td>{{attendee.lastName}}</td>
-            <td>{{attendee.email}}</td>
-            <td><input type="checkbox" ng-checked="attendee.subscribed"/></td>
+            <td><input required name="register.firstName" type="text" ng-model="attendee.firstName"/></td>
+            <td><input required type="text" ng-model="attendee.lastName"/></td>
+            <td><input required type="email" ng-model="attendee.email"/></td>
+            <td><input type="checkbox" ng-model="attendee.subscribed"/></td>
             <td><a ng-click="register.removeAttendee(id)" href>&times;</a></td>
           </tr>
         </table>

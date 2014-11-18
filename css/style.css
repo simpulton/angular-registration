@@ -25,3 +25,13 @@ body {
 div[ng-messages] {
   color: red;
 }
+table input {
+  border:none;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+}
+table input:hover, table input:focus {
+  outline: 0;
+  border-bottom: 2px solid #40A3FD;
+  transition: border 0.50s ease;
+}
