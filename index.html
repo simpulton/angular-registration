@@ -1,0 +1,90 @@
+<html>
+  <head>
+    <title>Registration Demo</title>
+    <link rel="stylesheet" href="css/angular-material.min.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+  </head>
+  <body ng-app="Register" ng-controller="RegisterController as register">
+    <div layout="horizontal" layout-padding>
+      <div flex layout="vertical" height="200px">
+        <md-card id="client">
+          <h1>Client</h1>
+            <form ng-submit="register.addAttendee(register.newAttendee)">
+              <md-text-float label="First Name" type="text" fid="firstName" name="firstName" ng-model="register.newAttendee.firstName" class="long"></md-text-float>
+              <md-text-float label="Last Name" type="text" fid="lastName" name="lastName" ng-model="register.newAttendee.lastName" class="long"></md-text-float>
+              <div layout="horizontal">
+                <md-text-float label="Coupon Code" type="text" fid="coupon" name="coupon" ng-model="register.couponCode"></md-text-float>
+                <md-content>
+                  <md-button class="md-raised md-primary" type="submit">Add Attendee</md-button>
+                </md-content>
+              </div>
+            </form>
+        </md-card>
+      </div>
+      <div flex layout="vertical">
+        <md-card>
+          <h1 flex>Server</h1>
+          <h2 flex class="text-center">Coupons</h2>
+          <div class="well coupons" flex>
+            <div flex layout="horizontal">
+              <h3 flex>Code</h3>
+              <h3 flex>Uses</h3>
+              <h3 flex></h3>
+            </div>
+            <md-list class="table">
+              <md-item ng-repeat="(id, coupon) in register.coupons">
+                <md-item-content>
+                  <div flex layout="horizontal">
+                    <h3 flex>{{coupon.code}}</h3>
+                    <h3 flex>{{coupon.uses}}</h3>
+                    <h3 flex><md-button ng-click="register.showConfirm($event, coupon, 'coupon', id)" href>&times;</md-button></h3>
+                  </div>
+                </md-item-content>
+              </md-item>
+            </md-list>
+          </div>
+          <div>
+            <form flex ng-submit="register.addCoupon(register.newCode)">
+              <div layout="horizontal" layout-padding>
+                <md-text-float label="Code" type="text" fid="couponCode" name="couponCode" ng-model="register.newCode.code"></md-text-float>
+                <md-text-float label="Uses" type="text" fid="uses" name="uses" ng-model="register.newCode.uses"></md-text-float>
+                <md-content>
+                  <md-button class="md-raised md-primary" type="submit">Add Coupon</md-button>
+                </md-content>
+              </div>
+            </form>
+          </div>
+          <h2 flex class="text-center">Attendees</h2>
+          <div class="well attendees" flex>
+            <div flex layout="horizontal">
+              <h3 flex>First Name</h3>
+              <h3 flex>Last Name</h3>
+              <h3 flex></h3>
+            </div>
+            <md-list class="table">
+              <md-item ng-repeat="(id, attendee) in register.attendees">
+                <md-item-content>
+                  <div flex layout="horizontal">
+                    <h3 flex>{{attendee.firstName}}</h3>
+                    <h3 flex>{{attendee.lastName}}</h3>
+                    <h3 flex><md-button ng-click="register.showConfirm($event, attendee, 'attendee', id)" href>&times;</md-button></h3>
+                  </div>
+                </md-item-content>
+              </md-item>
+            </md-list>
+          </div>
+          <div flex >
+            <h1></h1>
+          </div>
+        </md-card>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="vendor/angular.min.js"></script>
+    <script type="text/javascript" src="vendor/angular-animate.min.js"></script>
+    <script type="text/javascript" src="vendor/angular-material.min.js"></script>
+    <script type="text/javascript" src="vendor/angular-aria.min.js"></script>
+    <script type="text/javascript" src="vendor/hammer.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+  </body>
+</html>

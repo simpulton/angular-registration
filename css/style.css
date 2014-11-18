@@ -1,0 +1,30 @@
+.long input {
+  width: 100%;
+}
+button {
+  margin: 1em !important;
+  padding: 10px 30px !important;
+}
+.well {
+  background-color: #eee;
+  border-radius: 10px;
+  padding: 20px;
+}
+.well h3 {
+  text-align: center;
+}
+.coupons > div, .attendees > div {
+  border-bottom: 1px solid #000;
+}
+.table md-button {
+  margin: 0;
+}
+md-card {
+  padding: 20px;
+}
+.text-center {
+  text-align: center;
+}
+md-backdrop, .md-dialog-container {
+  position: fixed !important;
+}
