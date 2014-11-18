@@ -1,66 +1,77 @@
 <html>
   <head>
     <title>Registration Demo</title>
-    <link rel="stylesheet" href="css/angular-material.min.css"/>
-    <link rel="stylesheet" href="css/blue-theme.css"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/style.css"/>
   </head>
   <body ng-app="Register" ng-controller="RegisterController as register">
-    <div layout="horizontal" layout-padding>
-      <div flex layout="vertical" height="200px">
-        <md-card id="client">
-          <h1>Client</h1>
-            <form name="register.attendeeForm" ng-submit="register.addAttendee(register.newAttendee)">
-              <md-text-float required label="First Name" type="text" fid="firstName" name="firstName" ng-model="register.newAttendee.firstName" class="long"></md-text-float>
-              <md-text-float required  label="Last Name" type="text" fid="lastName" name="lastName" ng-model="register.newAttendee.lastName" class="long"></md-text-float>
-              <md-text-float required label="Email Address" mdFid="email" name="email" ng-model="register.newAttendee.email" class="long" type="email"></md-text-float>
-              <!--<input required="" type="email" id="email" name="email" ng-model="register.newAttendee.email" class="long"></md-text-float>-->
-              <div layout="horizontal">
-                <md-checkbox md-theme="blue" ng-model="register.newAttendee.subscribe">
-                  Subscribe for event updates
-                </md-checkbox>
-                <md-button class="md-raised md-primary" type="submit">Register</md-button>
+    <div class="container-fluid">
+      <div class="col-sm-6 card" id="client">
+        <h1>Client</h1>
+          <form name="register.attendeeForm" ng-submit="register.addAttendee(register.newAttendee)" novalidate>
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input ng-focus="true" ng-model-options="{ updateOn : 'blur' }" class="form-control" required type="text" id="firstName" name="firstName" ng-model="register.newAttendee.firstName"/>
+
+              <div ng-messages="register.attendeeForm.firstName.$error">
+                <div ng-message="required">
+                  <strong>This field is required.</strong>
+                </div>
               </div>
-            </form>
-          <div>{{register.attendeeForm.firstName.$error}}</div>
-          <div>{{register.attendeeForm.lastName.$error}}</div>
-          <div>{{register.attendeeForm.email.$error}}</div>
-        </md-card>
-      </div>
-      <div flex layout="vertical">
-        <md-card>
-          <h1 flex>Server</h1>
-          <h2 flex class="text-center">Attendees</h2>
-          <div class="well attendees" flex>
-            <div flex layout="horizontal">
-              <h3 flex>First Name</h3>
-              <h3 flex>Last Name</h3>
-              <h3 flex></h3>
+              
             </div>
-            <md-list class="table">
-              <md-item ng-repeat="(id, attendee) in register.attendees">
-                <md-item-content>
-                  <div flex layout="horizontal">
-                    <h3 flex>{{attendee.firstName}}</h3>
-                    <h3 flex>{{attendee.lastName}}</h3>
-                    <h3 flex><md-button ng-click="register.showConfirm($event, attendee, 'attendee', id)" href>&times;</md-button></h3>
-                  </div>
-                </md-item-content>
-              </md-item>
-            </md-list>
-          </div>
-          <div flex >
-            <h1></h1>
-          </div>
-        </md-card>
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input ng-model-options="{ updateOn : 'blur' }" class="form-control" required type="text" id="lastName" name="lastName" ng-model="register.newAttendee.lastName"/>
+
+              <div ng-messages="register.attendeeForm.lastName.$error">
+                <div ng-message="required">
+                  <strong>This field is required.</strong>
+                </div>
+              </div>
+
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input ng-model-options="{ updateOn : 'blur' }" class="form-control" required type="email" id="email" name="email" ng-model="register.newAttendee.email"/>
+
+              <div ng-messages="register.attendeeForm.email.$error">
+                <div ng-message="required">
+                  <strong>This field is required.</strong>
+                </div>
+                <div ng-message="email">
+                  <strong>Please format your email correctly.</strong>
+                </div>
+              </div>
+
+            </div>
+            <input type="checkbox" ng-model="register.newAttendee.subscribed"/> Subscribe for event updates
+            <button class="btn btn-primary" type="submit">Register</button>
+          </form>
+      </div>
+      <div class="col-sm-offset-6 col-sm-6 card">
+        <h1>Server</h1>
+        <table class="table table-striped">
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Subscribed</th>
+            <th></th>
+          </tr>
+          <tr  ng-repeat="(id, attendee) in register.attendees">
+            <td>{{attendee.firstName}}</td>
+            <td>{{attendee.lastName}}</td>
+            <td>{{attendee.email}}</td>
+            <td><input type="checkbox" ng-checked="attendee.subscribed"/></td>
+            <td><a ng-click="register.removeAttendee(id)" href>&times;</a></td>
+          </tr>
+        </table>
       </div>
     </div>
 
     <script type="text/javascript" src="vendor/angular.min.js"></script>
-    <script type="text/javascript" src="vendor/angular-animate.min.js"></script>
-    <script type="text/javascript" src="vendor/angular-material.min.js"></script>
-    <script type="text/javascript" src="vendor/angular-aria.min.js"></script>
-    <script type="text/javascript" src="vendor/hammer.min.js"></script>
+    <script type="text/javascript" src="vendor/angular-messages.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
   </body>
 </html>
