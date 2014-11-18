@@ -28,3 +28,7 @@ md-card {
 md-backdrop, .md-dialog-container {
   position: fixed !important;
 }
+#client {
+  position: fixed;
+  width: 49%;
+}
