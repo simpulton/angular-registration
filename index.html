@@ -11,14 +11,14 @@
           <form name="register.attendeeForm" ng-submit="register.addAttendee(register.newAttendee)" novalidate>
             <div class="form-group">
               <label for="firstName">First Name</label>
-              <input ng-focus="true" ng-model-options="{ updateOn : 'blur' }" class="form-control" required type="text" id="firstName" name="firstName" ng-model="register.newAttendee.firstName"/>
+              <input ng-model-options="{ updateOn : 'blur' }" class="form-control" required ng-required="true" type="text" id="firstName" name="firstName" ng-model="register.newAttendee.firstName"/>
 
               <div ng-messages="register.attendeeForm.firstName.$error">
                 <div ng-message="required">
                   <strong>This field is required.</strong>
                 </div>
               </div>
-              
+
             </div>
             <div class="form-group">
               <label for="lastName">Last Name</label>
