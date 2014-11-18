@@ -25,7 +25,7 @@ button.md-primary:hover {
 .well h3 {
   text-align: center;
 }
-.coupons > div, .attendees > div {
+.attendees > div {
   border-bottom: 1px solid #000;
 }
 .table md-button {
