@@ -1,9 +1,21 @@
+
+body > div {
+  background-color: #40A3FD;
+}
+md-card {
+  padding: 20px;
+  background-color: #fff;
+}
 .long input {
   width: 100%;
 }
-button {
+button.md-primary {
   margin: 1em !important;
   padding: 10px 30px !important;
+  background-color: #40A3FD !important;
+}
+button.md-primary:hover {
+  background-color: #4F94D3 !important;
 }
 .well {
   background-color: #eee;
@@ -18,9 +30,6 @@ button {
 }
 .table md-button {
   margin: 0;
-}
-md-card {
-  padding: 20px;
 }
 .text-center {
   text-align: center;
