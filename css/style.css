@@ -1,5 +1,5 @@
 
-body > div {
+body {
   background-color: #40A3FD;
 }
 md-card {
@@ -10,12 +10,20 @@ md-card {
   width: 100%;
 }
 button.md-primary {
+  color: #fff !important;
   margin: 1em !important;
   padding: 10px 30px !important;
   background-color: #40A3FD !important;
 }
 button.md-primary:hover {
   background-color: #4F94D3 !important;
+}
+md-checkbox .md-label {
+  border: none !important;
+}
+.md-checked .md-icon {
+  background-color: #40A3FD !important;
+  color: #fff;
 }
 .well {
   background-color: #eee;

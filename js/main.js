@@ -3,6 +3,9 @@ angular.module('Register', ['ngMaterial'])
     var register = this;
 
     // Attendees
+    register.newAttendee = {};
+    register.newAttendee.subscribe = false;
+
     var getAttendees = function() {
       register.attendees = AttendeeService.all()
     };

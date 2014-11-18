@@ -2,6 +2,7 @@
   <head>
     <title>Registration Demo</title>
     <link rel="stylesheet" href="css/angular-material.min.css"/>
+    <link rel="stylesheet" href="css/blue-theme.css"/>
     <link rel="stylesheet" href="css/style.css"/>
   </head>
   <body ng-app="Register" ng-controller="RegisterController as register">
@@ -9,11 +10,21 @@
       <div flex layout="vertical" height="200px">
         <md-card id="client">
           <h1>Client</h1>
-            <form ng-submit="register.addAttendee(register.newAttendee)">
-              <md-text-float label="First Name" type="text" fid="firstName" name="firstName" ng-model="register.newAttendee.firstName" class="long"></md-text-float>
-              <md-text-float label="Last Name" type="text" fid="lastName" name="lastName" ng-model="register.newAttendee.lastName" class="long"></md-text-float>
-                <md-button class="md-raised md-primary" type="submit">Add Attendee</md-button>
+            <form name="register.attendeeForm" ng-submit="register.addAttendee(register.newAttendee)">
+              <md-text-float required label="First Name" type="text" fid="firstName" name="firstName" ng-model="register.newAttendee.firstName" class="long"></md-text-float>
+              <md-text-float required  label="Last Name" type="text" fid="lastName" name="lastName" ng-model="register.newAttendee.lastName" class="long"></md-text-float>
+              <md-text-float required label="Email Address" mdFid="email" name="email" ng-model="register.newAttendee.email" class="long" type="email"></md-text-float>
+              <!--<input required="" type="email" id="email" name="email" ng-model="register.newAttendee.email" class="long"></md-text-float>-->
+              <div layout="horizontal">
+                <md-checkbox md-theme="blue" ng-model="register.newAttendee.subscribe">
+                  Subscribe for event updates
+                </md-checkbox>
+                <md-button class="md-raised md-primary" type="submit">Register</md-button>
+              </div>
             </form>
+          <div>{{register.attendeeForm.firstName.$error}}</div>
+          <div>{{register.attendeeForm.lastName.$error}}</div>
+          <div>{{register.attendeeForm.email.$error}}</div>
         </md-card>
       </div>
       <div flex layout="vertical">
