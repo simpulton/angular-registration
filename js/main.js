@@ -1,5 +1,5 @@
 angular.module('Register', ['ngMessages'])
-.controller('RegisterController', function(AttendeeService) {
+.controller('RegisterController', function(AttendeeService, $timeout) {
     var register = this;
 
     // Attendees
@@ -20,6 +20,13 @@ angular.module('Register', ['ngMessages'])
 
     var clearForm = function() {
       register.newAttendee = {};
+
+      // Don't ask why because I don't know >:(
+      $timeout(function() {
+        console.log(register.attendeeForm)
+        register.attendeeForm.$setPristine();
+        register.attendeeForm.$setUntouched();
+      });
     };
 
     getAttendees();
