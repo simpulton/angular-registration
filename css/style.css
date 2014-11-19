@@ -18,10 +18,6 @@ body {
 .btn-primary:hover {
   background-color: #4F94D3 !important;
 }
-#client {
-  position: fixed;
-  width: 49%;
-}
 div[ng-messages] {
   color: red;
 }

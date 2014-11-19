@@ -5,68 +5,77 @@
     <link rel="stylesheet" href="css/style.css"/>
   </head>
   <body ng-app="Register" ng-controller="RegisterController as register">
-    <div class="container-fluid">
-      <div class="col-sm-6 card" id="client">
+    <div class="col-md-6 col-xs-12" id="client">
+      <div class="col-sm-12 card">
         <h1>Client</h1>
-          <form name="register.attendeeForm" ng-submit="register.addAttendee(register.newAttendee)" novalidate>
-            <div class="form-group">
-              <label for="firstName">First Name</label>
-              <input ng-model-options="{ updateOn : 'blur' }" class="form-control" required ng-required="true" type="text" id="firstName" name="firstName" ng-model="register.newAttendee.firstName"/>
+        <form name="register.attendeeForm" ng-submit="register.addAttendee(register.newAttendee)" novalidate>
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input ng-model-options="{ updateOn : 'blur' }" class="form-control" required ng-required="true" type="text" id="firstName" name="firstName" ng-model="register.newAttendee.firstName"/>
 
-              <div ng-messages="register.attendeeForm.firstName.$error">
-                <div ng-message="required">
-                  <strong>This field is required.</strong>
-                </div>
+            <div ng-messages="register.attendeeForm.firstName.$error">
+              <div ng-message="required">
+                <strong>This field is required.</strong>
               </div>
-
             </div>
-            <div class="form-group">
-              <label for="lastName">Last Name</label>
-              <input ng-model-options="{ updateOn : 'blur' }" class="form-control" required type="text" id="lastName" name="lastName" ng-model="register.newAttendee.lastName"/>
 
-              <div ng-messages="register.attendeeForm.lastName.$error">
-                <div ng-message="required">
-                  <strong>This field is required.</strong>
-                </div>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input ng-model-options="{ updateOn : 'blur' }" class="form-control" required type="text" id="lastName" name="lastName" ng-model="register.newAttendee.lastName"/>
+
+            <div ng-messages="register.attendeeForm.lastName.$error">
+              <div ng-message="required">
+                <strong>This field is required.</strong>
               </div>
-
             </div>
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input ng-model-options="{ updateOn : 'blur' }" class="form-control" required type="email" id="email" name="email" ng-model="register.newAttendee.email"/>
 
-              <div ng-messages="register.attendeeForm.email.$error">
-                <div ng-message="required">
-                  <strong>This field is required.</strong>
-                </div>
-                <div ng-message="email">
-                  <strong>Please format your email correctly.</strong>
-                </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input ng-model-options="{ updateOn : 'blur' }" class="form-control" required type="email" id="email" name="email" ng-model="register.newAttendee.email"/>
+
+            <div ng-messages="register.attendeeForm.email.$error">
+              <div ng-message="required">
+                <strong>This field is required.</strong>
               </div>
-
+              <div ng-message="email">
+                <strong>Please format your email correctly.</strong>
+              </div>
             </div>
-            <input type="checkbox" ng-model="register.newAttendee.subscribed"/> Subscribe for event updates
-            <button class="btn btn-primary" type="submit">Register</button>
-          </form>
+
+          </div>
+          <input type="checkbox" ng-model="register.newAttendee.subscribed"/> Subscribe for event updates
+          <button class="btn btn-primary" type="submit">Register</button>
+        </form>
       </div>
-      <div class="col-sm-offset-6 col-sm-6 card">
+    </div>
+    <div class="col-md-6 col-xs-12">
+      <div class="col-sm-12 card">
         <h1>Server</h1>
-        <table class="table table-striped">
-          <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Subscribed</th>
-            <th></th>
-          </tr>
-          <tr  ng-repeat="(id, attendee) in register.attendees">
-            <td><input required name="register.firstName" type="text" ng-model="attendee.firstName"/></td>
-            <td><input required type="text" ng-model="attendee.lastName"/></td>
-            <td><input required type="email" ng-model="attendee.email"/></td>
-            <td><input type="checkbox" ng-model="attendee.subscribed"/></td>
-            <td><a ng-click="register.removeAttendee(id)" href>&times;</a></td>
-          </tr>
-        </table>
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Subscribed</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr ng-repeat="(id, attendee) in register.attendees">
+                <td><input required name="register.firstName" type="text" ng-model="attendee.firstName"/></td>
+                <td><input required type="text" ng-model="attendee.lastName"/></td>
+                <td><input required type="email" ng-model="attendee.email"/></td>
+                <td><input type="checkbox" ng-model="attendee.subscribed"/></td>
+                <td><a ng-click="register.removeAttendee(id)" href>&times;</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
 
